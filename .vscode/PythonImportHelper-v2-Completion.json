@@ -96,6 +96,22 @@
         "documentation": {}
     },
     {
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_USER",
+        "importPath": "onlineShop.settings",
+        "description": "onlineShop.settings",
+        "isExtraImport": true,
+        "detail": "onlineShop.settings",
+        "documentation": {}
+    },
+    {
         "label": "django.db.models.deletion",
         "kind": 6,
         "isExtraImport": true,
@@ -191,6 +207,31 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "dj_database_url",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "dj_database_url",
+        "description": "dj_database_url",
+        "detail": "dj_database_url",
+        "documentation": {}
+    },
+    {
+        "label": "get_schema_view",
+        "importPath": "drf_yasg.views",
+        "description": "drf_yasg.views",
+        "isExtraImport": true,
+        "detail": "drf_yasg.views",
+        "documentation": {}
+    },
+    {
+        "label": "openapi",
+        "importPath": "drf_yasg",
+        "description": "drf_yasg",
+        "isExtraImport": true,
+        "detail": "drf_yasg",
         "documentation": {}
     },
     {
@@ -368,7 +409,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',\n    'onlineapp',\n]",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',\n    'onlineapp',\n    'drf_yasg',  # Swagger documentation",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -404,7 +445,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "WSGI_APPLICATION = 'onlineShop.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation",
+        "peekOfCode": "WSGI_APPLICATION = 'onlineShop.wsgi.application'\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nDATABASES['default'] = dj_database_url.config()",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -413,7 +454,16 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {",
+        "peekOfCode": "DATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3',\n        'NAME': BASE_DIR / 'db.sqlite3',\n    }\n}\nDATABASES['default'] = dj_database_url.config()\n# Password validation\n# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES['default']",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "DATABASES['default'] = dj_database_url.config()\n# Password validation\n# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators\nAUTH_PASSWORD_VALIDATORS = [\n    {\n        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',\n    },\n    {\n        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',\n    },",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -431,7 +481,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "LANGUAGE_CODE = 'en-us'\nTIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -440,7 +490,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "TIME_ZONE = 'UTC'\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -449,7 +499,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -458,7 +508,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = 'static/'\nSTATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -467,7 +517,34 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = 'static/'\nSTATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_ROOT",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / \"staticfiles_build\" / \"static\"\nMEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "MEDIA_URL = 'media/'\nMEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "MEDIA_ROOT = BASE_DIR / \"media\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"",
         "detail": "src.onlineShop.settings",
         "documentation": {}
     },
@@ -476,8 +553,71 @@
         "kind": 5,
         "importPath": "src.onlineShop.settings",
         "description": "src.onlineShop.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
         "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_BACKEND",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_PORT",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_USE_TLS",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_USER",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_HOST_USER = \"ansoumanesoumaoro07@gmail.com\"\nEMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_PASSWORD",
+        "kind": 5,
+        "importPath": "src.onlineShop.settings",
+        "description": "src.onlineShop.settings",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = \"inqgejngajoyjrgh\"\n  # Replace with your actual password",
+        "detail": "src.onlineShop.settings",
+        "documentation": {}
+    },
+    {
+        "label": "schema_view",
+        "kind": 5,
+        "importPath": "src.onlineShop.urls",
+        "description": "src.onlineShop.urls",
+        "peekOfCode": "schema_view = get_schema_view(\n    openapi.Info(\n        title=\"Online Shop API\",\n        default_version=\"1.0.0\",\n        description=\"API documentation for the Online Shop project\",\n    ),\n    public=True,\n)\nurlpatterns = [\n    path('admin/', admin.site.urls),",
+        "detail": "src.onlineShop.urls",
         "documentation": {}
     },
     {
@@ -485,7 +625,7 @@
         "kind": 5,
         "importPath": "src.onlineShop.urls",
         "description": "src.onlineShop.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('onlineapp.api.urls'))\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('onlineapp.api.urls')),\n    path('swagger/schema/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),\n]",
         "detail": "src.onlineShop.urls",
         "documentation": {}
     },
@@ -494,7 +634,16 @@
         "kind": 5,
         "importPath": "src.onlineShop.wsgi",
         "description": "src.onlineShop.wsgi",
-        "peekOfCode": "application = get_wsgi_application()",
+        "peekOfCode": "application = get_wsgi_application()\napp = application  # For Vercel compatibility",
+        "detail": "src.onlineShop.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.onlineShop.wsgi",
+        "description": "src.onlineShop.wsgi",
+        "peekOfCode": "app = application  # For Vercel compatibility",
         "detail": "src.onlineShop.wsgi",
         "documentation": {}
     },
